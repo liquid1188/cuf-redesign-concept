@@ -285,6 +285,12 @@
 
   /* ---- multi-page additions ---- */
   nav.links a.active{color:var(--green)}
+  nav.links{gap:20px}
+  nav.links a{font-size:.82rem}
+  .util-inner{gap:14px}
+  .util-links a{color:rgba(255,255,255,.92);text-decoration:none;margin-left:16px;font-weight:500}
+  .util-links a:hover{color:#fff;text-decoration:underline}
+  @media(max-width:1180px){nav.links{gap:14px}nav.links a{font-size:.78rem}}
   nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--green)}
   .page-hero{background:var(--green);color:#fff;padding:62px 0 56px;position:relative;overflow:hidden}
   .page-hero::after{content:"";position:absolute;inset:0;background:var(--logo) right -60px center/auto 170% no-repeat;filter:brightness(0) invert(1);opacity:.05;pointer-events:none}
@@ -336,6 +342,8 @@
   .finder .ff-search{max-width:520px}
   .finder-empty{font-family:var(--ui);color:var(--ink-soft);padding:18px 0}
   @media(max-width:700px){.lefebvre{padding:30px 24px}}
+  .fl-art img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block}
+  .fl-art{border-radius:12px;overflow:hidden;align-self:stretch;min-height:340px}
   .twocol{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
   @media(max-width:820px){.twocol{grid-template-columns:1fr;gap:30px}}
   .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -351,11 +359,12 @@
 <div class="util"><div class="wrap util-inner">
     <span>Information Services · 1-800-MY-FAITH (1-800-693-2484)</span>
     <span class="hide-sm">Mon–Fri · 8am–4pm EST</span>
+    <span class="util-links"><a href="prayer.html">Prayer</a><a href="contact.html">Contact</a></span>
   </div></div>
   <header class="nav" id="nav"><div class="wrap nav-inner">
     <a class="brand" href="index.html"><span class="brandmark"></span>
       <span class="nm">Catholics United for the Faith<small>An international lay apostolate · 1968</small></span></a>
-    <nav class="links" id="navlinks"><a href="about.html">About</a><a href="heritage.html">Heritage</a><a href="library.html" class="active">Library</a><a href="faith-life.html">Faith &amp; Life</a><a href="chapters.html">Chapters</a><a href="membership.html">Membership</a><a href="prayer.html">Prayer</a>
+    <nav class="links" id="navlinks"><a href="about.html">About</a><a href="heritage.html">Heritage</a><a href="info-services.html">Information Services</a><a href="library.html" class="active">Library</a><a href="faith-life.html">Faith &amp; Life</a><a href="chapters.html">Chapters</a><a href="membership.html">Membership</a>
       <a class="btn btn-green" href="donate.html" style="padding:10px 20px">Donate</a></nav>
     <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
   </div></header>
