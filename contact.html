@@ -341,6 +341,20 @@
   .finder{margin:30px 0 8px}
   .finder .ff-search{max-width:520px}
   .finder-empty{font-family:var(--ui);color:var(--ink-soft);padding:18px 0}
+  .form{max-width:600px;margin-top:8px}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:16px}
+  .field.full{grid-column:1/-1}
+  .field label{display:block;font-family:var(--ui);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;font-weight:600}
+  .field input,.field select,.field textarea{width:100%;font-family:var(--ui);font-size:1rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 15px;outline:none;transition:border-color .2s}
+  .field input:focus,.field select,.field textarea:focus{border-color:var(--green)}
+  .field textarea{min-height:140px;resize:vertical}
+  .form-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px}
+  .form-status{font-family:var(--ui);font-size:.9rem}
+  .form-status.ok{color:var(--green)}
+  .form-status.err{color:#9a2b2b}
+  .form-note{font-family:var(--ui);font-size:.82rem;color:var(--ink-soft);margin-top:14px}
+  @media(max-width:620px){.form .row{grid-template-columns:1fr}}
   @media(max-width:700px){.lefebvre{padding:30px 24px}}
   .fl-art img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block}
   .fl-art{border-radius:12px;overflow:hidden;align-self:stretch;min-height:340px}
@@ -376,15 +390,35 @@
 
 <section><div class="wrap"><div class="twocol">
   <div class="reveal">
+    <span class="eyebrow">Ask a question</span>
+    <p class="prose" style="margin:14px 0 22px;color:var(--ink-soft)">Use the form below and our staff will research your question and reply in writing — free of charge.</p>
+    <form class="form" id="contactForm" onsubmit="return cufSubmit(event,'contactForm','contactStatus')">
+      <input type="hidden" name="_subject" value="CUF website: a question for Information Services">
+      <div class="row">
+        <div class="field"><label for="cfName">Your name</label><input id="cfName" name="name" type="text" required></div>
+        <div class="field"><label for="cfEmail">Email</label><input id="cfEmail" name="email" type="email" required></div>
+      </div>
+      <div class="field"><label for="cfTopic">Topic</label>
+        <select id="cfTopic" name="topic">
+          <option>General question</option><option>Apologetics</option><option>Catechesis</option>
+          <option>Family Issues</option><option>Groups &amp; People</option><option>Liturgy &amp; Sacraments</option>
+          <option>Sacred Scripture</option><option>Membership</option><option>Faith Fact request</option>
+        </select></div>
+      <div class="field"><label for="cfQuestion">Your question</label><textarea id="cfQuestion" name="question" required></textarea></div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-green">Send to Information Services</button>
+        <span class="form-status" id="contactStatus"></span>
+      </div>
+      <p class="form-note">Prefer to call? Information Services answers at 1-800-MY-FAITH (1-800-693-2484), Mon–Fri 8am–4pm EST.</p>
+    </form>
+  </div>
+  <div class="reveal">
     <span class="eyebrow">Reach us</span>
     <div class="prose" style="margin-top:16px">
       <p><b style="color:var(--green)">Call Information Services</b><br>Toll free: 1-800-MY-FAITH (1-800-693-2484)<br>Office: 1-740-283-2484<br>Mon–Fri · 8:00am – 4:00pm EST</p>
       <p><b style="color:var(--green)">By mail</b><br>Catholics United for the Faith<br>85882 Water Works Rd.<br>Hopedale, OH 43976</p>
     </div>
-    <a class="btn btn-green" href="https://www.cuf.org/contact" target="_blank" rel="noopener" style="margin-top:8px">Submit a question</a>
-  </div>
-  <div class="reveal">
-    <div class="hl-card"><span class="hl-k">Free of charge</span><h3 style="color:var(--green)">How Information Services works</h3>
+    <div class="hl-card" style="margin-top:10px"><span class="hl-k">Free of charge</span><h3 style="color:var(--green)">How Information Services works</h3>
       <p style="color:var(--ink-soft)">Ask any question about the Catholic Church — doctrine, discipline, or current events. Answers are given in writing, either as a Faith Fact or as a research letter, with the magisterial and scriptural citations you can reference and share. About half of all inquiries are answered by one of nearly 300 existing Faith Facts.</p>
     </div>
   </div>
@@ -409,5 +443,24 @@
     <span class="cr">Site by Lickity Split Web Design</span>
   </div>
 </footer>
-<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.08});document.querySelectorAll(".reveal").forEach(el=>io.observe(el));addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("solid",scrollY>30));</script>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.08});document.querySelectorAll(".reveal").forEach(el=>io.observe(el));addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("solid",scrollY>30));</script><script>
+window.CUFFORM={endpoint:"https://formspree.io/f/YOUR_FORM_ID",email:"info@cuf.org"};
+function cufSubmit(ev,formId,statusId){ev.preventDefault();
+ var f=document.getElementById(formId),s=document.getElementById(statusId);
+ var fd=new FormData(f),data={};fd.forEach(function(v,k){data[k]=v;});
+ if(!data.email||!/.+@.+\..+/.test(data.email)){s.textContent="Please enter a valid email address.";s.className="form-status err";return false;}
+ if(!data.name){s.textContent="Please enter your name.";s.className="form-status err";return false;}
+ s.textContent="Sending\u2026";s.className="form-status";
+ var ep=window.CUFFORM.endpoint;
+ if(ep.indexOf("YOUR_FORM_ID")>-1){
+   var body=Object.keys(data).map(function(k){return k.replace(/_/g," ")+": "+data[k];}).join("\n");
+   window.location.href="mailto:"+window.CUFFORM.email+"?subject="+encodeURIComponent(data._subject||"CUF website inquiry")+"&body="+encodeURIComponent(body);
+   s.textContent="Your email program should open with the message ready to send.";s.className="form-status ok";return false;}
+ fetch(ep,{method:"POST",headers:{"Accept":"application/json"},body:fd}).then(function(r){
+   if(r.ok){f.reset();s.textContent="Thank you. Your message has been received \u2014 we'll be in touch.";s.className="form-status ok";}
+   else{throw 0;}}).catch(function(){
+   s.textContent="Sorry, something went wrong. Please call 1-800-MY-FAITH (1-800-693-2484).";s.className="form-status err";});
+ return false;}
+(function(){var t=new URLSearchParams(location.search).get("topic");if(t){var q=document.getElementById("cfQuestion");if(q){q.value='I would like to request the Faith Fact: "'+t+'".';var su=document.querySelector('#contactForm [name=_subject]');if(su)su.value='Faith Fact request: '+t;}}})();
+</script>
 </body></html>
