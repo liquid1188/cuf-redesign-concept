@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Catholics United for the Faith — Redesign Concept</title>
-<meta name="description" content="An international lay apostolate founded in 1968 to support, defend, and advance the teaching of the Catholic Church. Redesign concept by Lickity Split Web Design." />
+<meta name="description" content="An international lay apostolate founded in 1968 to support, defend, and advance the teaching of the Catholic Church." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -219,6 +219,26 @@
   .foot-bar{border-top:1px solid rgba(255,255,255,.13);padding:20px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--ui);font-size:.74rem;color:rgba(255,255,255,.5)}
   .foot-bar .cr{color:rgba(255,255,255,.66)}
 
+  .plate .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+  .plate .slide.on{opacity:1}
+  .callouts{padding:62px 0 6px}
+  .callout-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .callout{position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--line);text-decoration:none;background:var(--green-deep)}
+  .callout img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s ease;filter:brightness(.6) saturate(.95)}
+  .callout::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,38,0,.1),rgba(0,40,0,.84));transition:background .35s}
+  .callout .c-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px 22px}
+  .callout .c-k{font-family:var(--ui);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+  .callout h3{font-family:var(--display);font-weight:600;font-size:1.5rem;color:#fff;margin:0;line-height:1.04}
+  .callout .c-go{font-family:var(--ui);font-size:.76rem;font-weight:600;color:#fff;margin-top:12px;display:inline-flex;gap:.4em;align-items:center;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+  .callout:hover img{transform:scale(1.07);filter:brightness(.72) saturate(1.05)}
+  .callout:hover::after{background:linear-gradient(180deg,rgba(0,40,0,.04),rgba(0,52,0,.66))}
+  .callout:hover .c-go{opacity:1;transform:none}
+  .ways{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:11px}
+  .ways li{position:relative;padding-left:28px;color:var(--ink-soft);font-size:1.04rem}
+  .ways li::before{content:"✠";position:absolute;left:0;top:1px;color:var(--green)}
+  .oblig li::before{content:"›";font-weight:700}
+  @media (max-width:900px){.callout-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.callout-grid{grid-template-columns:1fr}}
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
   .reveal.in{opacity:1;transform:none}
 
@@ -245,14 +265,12 @@
 </style>
 </head>
 <body>
-<div class="badge">Concept · not the live site</div>
 
 <div class="util">
   <div class="wrap util-inner">
     <span class="phone">Questions about the Faith? Call <b>1-800-MY-FAITH</b></span>
     <span class="r">
       <span class="hide-sm">Mon–Fri · 8am–4pm EST</span>
-      <a href="#give">Donate</a>
     </span>
   </div>
 </div>
@@ -289,8 +307,11 @@
       </div>
       <div class="hero-hint">Try <b>"SSPX"</b>, <b>"crisis"</b>, or <b>"conscience"</b> — over 10,000 questions researched.</div>
     </div>
-    <div class="plate" style="background-image:url('https://www.cuf.org/images/paintings/slider/calling_of_apostles_26.jpg')">
-      <div class="cap">The Calling of the Apostles</div>
+    <div class="plate" id="heroPlate">
+      <div class="slide on" style="background-image:url('https://www.cuf.org/images/paintings/slider/calling_of_apostles_26.jpg')"></div>
+      <div class="slide" style="background-image:url('https://www.cuf.org/images/paintings/slider/last_supper_26.jpg')"></div>
+      <div class="slide" style="background-image:url('https://www.cuf.org/images/paintings/slider/birth_st_mary_26.jpg')"></div>
+      <div class="slide" style="background-image:url('https://www.cuf.org/images/paintings/slider/mystique_26.jpg')"></div>
     </div>
   </div>
 </section>
@@ -308,6 +329,17 @@
     <div class="item"><b>St. Joseph Foundation</b><span>Affiliated since 2017</span></div>
   </div>
 </div>
+
+<section class="callouts">
+  <div class="wrap">
+    <div class="callout-grid">
+      <a class="callout reveal" href="#membership"><img src="https://www.cuf.org/images/paintings/cards/annunciation.jpg" alt=""><div class="c-body"><span class="c-k">Become a member</span><h3>Join Us</h3><span class="c-go">Explore membership →</span></div></a>
+      <a class="callout reveal" href="#chapters"><img src="https://www.cuf.org/images/paintings/cards/assumption.jpg" alt=""><div class="c-body"><span class="c-k">A community near you</span><h3>CUF Chapters</h3><span class="c-go">Find or start one →</span></div></a>
+      <a class="callout reveal" href="#library"><img src="https://www.cuf.org/images/paintings/cards/ghent_almighty.jpg" alt=""><div class="c-body"><span class="c-k">In times of crisis</span><h3>Position Papers</h3><span class="c-go">Read the papers →</span></div></a>
+      <a class="callout reveal" href="#prayer"><img src="https://www.cuf.org/images/paintings/slider/birth_st_mary_26.jpg" alt=""><div class="c-body"><span class="c-k">The focus of our work</span><h3>The CUF Prayer</h3><span class="c-go">Pray with us →</span></div></a>
+    </div>
+  </div>
+</section>
 
 <section class="answers" id="answers">
   <div class="wrap">
@@ -409,16 +441,20 @@
     </div>
     <div class="timeline reveal">
       <div class="tl-line"></div>
-      <div class="tl-item"><div class="tl-year">1968</div><div class="tl-node"></div><div class="tl-body"><h3>A new apostolate is born</h3><p>Matters came to a head with the publication of Pope Paul VI's Humanae Vitae and the immediate wave of dissent it garnered. In September of 1968, H. Lyman Stebbins was chosen to serve as the founding president of CUF.</p></div></div>
-      <div class="tl-item"><div class="tl-year">1970</div><div class="tl-node"></div><div class="tl-body"><h3>Lay Witness begins</h3><p>CUF began publishing its Lay Witness newsletter more than 50 years ago — what began as a newsletter for members developed into a full-color magazine, and continues today.</p></div></div>
-      <div class="tl-item"><div class="tl-year">1984</div><div class="tl-node"></div><div class="tl-body"><h3>A sister apostolate</h3><p>Chuck Wilson founded CUF's sister apostolate, The Saint Joseph Foundation, to assist the Faithful in the vindication of their rights within the Law of the Catholic Church.</p></div></div>
-      <div class="tl-item"><div class="tl-year">1986</div><div class="tl-node"></div><div class="tl-body"><h3>Luther in reverse</h3><p>Dr. Scott Hahn was introduced to his local CUF chapter in Milwaukee. St. Gregory VII Chapter of CUF is still meeting in Milwaukee, and Scott Hahn is still Catholic.</p></div></div>
-      <div class="tl-item"><div class="tl-year">1987</div><div class="tl-node"></div><div class="tl-body"><h3>Faith and Life</h3><p>CUF published the renowned Faith and Life catechism series for grades 1–8, now in its third edition and widely used by parishes, Catholic schools, and homeschooling families.</p></div></div>
-      <div class="tl-item"><div class="tl-year">1998</div><div class="tl-node"></div><div class="tl-body"><h3>FOCUS and Emmaus Road</h3><p>Under president Curtis Martin, CUF launched the Fellowship of Catholic University Students, founded that year as its own organization, and started Emmaus Road Publishing in response to the call for a new evangelization.</p></div></div>
-      <div class="tl-item"><div class="tl-year">2014</div><div class="tl-node"></div><div class="tl-body"><h3>A painful transition</h3><p>The President recommended that the apostolate wind down operations and dissolve. The Board of Directors rejected the proposal, and a difficult transition began to preserve CUF's mission.</p></div></div>
-      <div class="tl-item"><div class="tl-year">2017</div><div class="tl-node"></div><div class="tl-body"><h3>Two sisters under one roof</h3><p>CUF affiliated to its longtime sister apostolate, The Saint Joseph Foundation. CUF remains an autonomous apostolate, sharing office space and an exceptional research library.</p></div></div>
-      <div class="tl-item"><div class="tl-year">2018</div><div class="tl-node"></div><div class="tl-body"><h3>Golden Anniversary</h3><p>CUF celebrated 50 years of uniting the Faithful from all walks of life to support, defend, and advance the Teachings of the Catholic Church.</p></div></div>
-      <div class="tl-item"><div class="tl-year">Today</div><div class="tl-node"></div><div class="tl-body"><h3>A threshold of Hope</h3><p>Every day, CUF is connecting Truth-seekers and devout Catholics with the information, resources, and community they need to grow in the Faith and be instruments of renewal.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1968</div><div class="tl-node"></div><div class="tl-body"><h3>A new apostolate is born</h3><p>Matters came to a head with Pope Paul VI's Humanae Vitae and the wave of dissent it drew from bishops, priests, and theologians. CUF's founders felt compelled to serve as lay witnesses of fidelity to Peter, to the Church, and thus to Christ. In September 1968, H. Lyman Stebbins was chosen as founding president.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1968 – today</div><div class="tl-node"></div><div class="tl-body"><h3>Pro-life from the first</h3><p>Since CUF's earliest days, members have defended the child in the womb — joining Right to Life organizations and Marches for Life, praying outside abortion clinics, counseling women to choose life, and aiding crisis pregnancy centers.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1970</div><div class="tl-node"></div><div class="tl-body"><h3>Lay Witness begins</h3><p>CUF began publishing Lay Witness more than 50 years ago. What began as a members' newsletter grew into a full-color magazine, and continues today as a bi-monthly carrying timely articles on the Faith.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1970s – 90s</div><div class="tl-node"></div><div class="tl-body"><h3>Defending catechesis</h3><p>CUF officers, chapters, and members produced in-depth reviews of catechetical and sex-education programs in parishes and schools, charitably flagging conflicts with Catholic teaching. Information Services continues this work today.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1984</div><div class="tl-node"></div><div class="tl-body"><h3>A sister apostolate</h3><p>Chuck Wilson, a convert formed in CUF's Houston chapter, founded CUF's sister apostolate, The Saint Joseph Foundation, to help the faithful vindicate their rights within the law of the Church.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1986</div><div class="tl-node"></div><div class="tl-body"><h3>Luther in reverse</h3><p>A new convert, Dr. Scott Hahn, found a community of devout Catholics in his local CUF chapter in Milwaukee. St. Gregory VII Chapter still meets there, and Scott Hahn is still Catholic.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1987</div><div class="tl-node"></div><div class="tl-body"><h3>Faith and Life</h3><p>CUF published the renowned Faith and Life catechism series for grades 1–8, later adding a kindergarten year, teacher editions, and student handbooks. Now in its third edition, published exclusively by Ignatius Press.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1988</div><div class="tl-node"></div><div class="tl-body"><h3>A Knight to remember</h3><p>On January 10, 1988, H. Lyman Stebbins was made a Knight Commander of the Order of St. Gregory the Great by Pope St. John Paul II, in recognition of his founding role. He died the following year, on February 22, 1989.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1998</div><div class="tl-node"></div><div class="tl-body"><h3>FOCUS is born</h3><p>During his tenure as president, Curtis Martin launched the Fellowship of Catholic University Students. In 1998, FOCUS was founded as its own organization under his leadership.</p></div></div>
+      <div class="tl-item"><div class="tl-year">1998</div><div class="tl-node"></div><div class="tl-body"><h3>Emmaus Road Publishing</h3><p>CUF's publishing arm, launched in response to the call for a new evangelization, placed orthodox Bible studies into the hands of Faith-hungry Catholics. It was sold to the St. Paul Center for Biblical Theology in 2014.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2014</div><div class="tl-node"></div><div class="tl-body"><h3>Sisters under one roof</h3><p>When dissolution was proposed, the Board of Directors refused. Through a painful transition CUF sold its real estate and suspended Lay Witness, while Executive Vice President Shannon Minch-Hughes kept fulfilling Faith Facts requests, until a path forward emerged.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2017</div><div class="tl-node"></div><div class="tl-body"><h3>Affiliation with the SJF</h3><p>On February 4, 2017, CUF affiliated to The Saint Joseph Foundation, led by Philip Gray — himself CUF's Director of Information Services from 1998. CUF remained an autonomous apostolate, sharing the SJF's offices and exceptional research library.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2018</div><div class="tl-node"></div><div class="tl-body"><h3>Golden Anniversary</h3><p>CUF celebrated 50 years of uniting the faithful from all walks of life to support, defend, and advance the teachings of the Catholic Church.</p></div></div>
+      <div class="tl-item"><div class="tl-year">Today</div><div class="tl-node"></div><div class="tl-body"><h3>A threshold of Hope</h3><p>Every day, CUF connects truth-seekers and devout Catholics with the information, resources, and community they need to grow in the Faith and be instruments of renewal.</p></div></div>
     </div>
   </div>
 </section>
@@ -430,6 +466,13 @@
       <h2 style="margin:.55rem 0 1.3rem">What CUF is.</h2>
       <p class="dropcap">Catholics United for the Faith (CUF) is an international lay apostolate founded to unite the Faithful from all walks of life in order to support, defend, and advance the Teaching Office of the Catholic Church. CUF is faithful to the Magisterium of the Church, holding that the Church is indefectible and will not fail, that Her teachings can develop but never fundamentally change.</p>
       <p>CUF seeks to support the hierarchy in proclaiming the saving truths, but is not afraid to warn the faithful against error and immorality wherever it appears. CUF is committed to assisting Catholics of all states in life to participate in the Church's apostolic activity, reform existing activities, and even found their own apostolates where this is needed. In these ways, CUF pursues and supports authentic Church Reform.</p>
+      <p style="margin-bottom:.7rem">CUF defends the Church, and unites the faithful of all states in life to defend her, in practical ways:</p>
+      <ul class="ways">
+        <li>Personalized help with doctrinal, moral, and pastoral questions through Information Services.</li>
+        <li>Catechesis through print materials such as our Faith Facts and the Faith and Life catechetical curriculum.</li>
+        <li>Catholic formation talks given by CUF staff and members.</li>
+        <li>Formation of CUF Chapters for the founding of new apostolates dedicated to authentic reform.</li>
+      </ul>
     </div>
     <div class="pull reveal">
       <div class="q">"In times of confusion and uncertainty, the CUF chapter and all CUF members strive to be a source of stability by bearing clear witness to the authentic doctrines and disciplines of the Church."</div>
@@ -476,6 +519,14 @@
           <li>Assistance to charter and develop a Chapter in your local area, with formation materials</li>
           <li>Access to the CUF research library and Speakers Bureau</li>
         </ul>
+        <span class="eyebrow" style="margin:28px 0 14px;display:inline-block">Obligations of membership</span>
+        <ul class="benefits oblig" style="margin-top:4px">
+          <li>Accept the CUF mission to support, defend, and advance the teaching Church as your own</li>
+          <li>Support CUF spiritually, praying daily for the apostolate and its members</li>
+          <li>Support CUF morally by using and sharing its resources</li>
+          <li>Engage in apostolic activity in keeping with your state in life</li>
+          <li>When possible, support CUF financially</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -508,8 +559,8 @@
     <div class="ref">Matthew 9:37 · Douay-Rheims</div>
     <p>As we work to support, advance, and defend the teaching efforts of the Church, we welcome your much needed help. Your support helps ensure CUF's long-term viability. Most importantly, we ask for your prayers, for without God's grace our greatest efforts will have no effect.</p>
     <div class="give-cta">
-      <a class="btn btn-ghost" href="#">Make a donation</a>
-      <a class="btn" href="#contact" style="background:#fff;color:var(--green)">Become a member</a>
+      <a class="btn" href="#" style="background:#fff;color:var(--green);font-weight:700">Make a donation</a>
+      <a class="btn btn-ghost" href="#contact">Become a member</a>
     </div>
   </div>
 </section>
@@ -545,7 +596,7 @@
   </div>
   <div class="wrap foot-bar">
     <span>© 2026 Catholics United for the Faith. All rights reserved.</span>
-    <span class="cr">Redesign concept by Lickity Split Web Design — not an official CUF website.</span>
+    <span class="cr">Site by Lickity Split Web Design</span>
   </div>
 </footer>
 
@@ -634,6 +685,8 @@ function runHeroSearch(){
 document.getElementById("heroSearch").addEventListener("keydown",e=>{if(e.key==="Enter")runHeroSearch();});
 
 render();
+
+(function(){const sl=[...document.querySelectorAll('#heroPlate .slide')];if(sl.length>1){let i=0;setInterval(()=>{sl[i].classList.remove('on');i=(i+1)%sl.length;sl[i].classList.add('on');},5000);}})();
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.1});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
